@@ -9,27 +9,7 @@ app.use(express.urlencoded()); // to support URL-encoded bodies
 app.use(bodyParser.urlencoded({extended :true}));
 
 
-app.get('/buzzwords', (req,res) => {
-  res.send({'buzzwords' : []})
-});
 
-app.post('/buzzword', (req,res) => {
-  res.send({ 'success' : true });
-
-  let buzzword = req.body.buzzword,
-      points = req.body.points
-});
-
-app.put('/buzzword', (req, res) => {
-  res.send({ 'success' : true, newScore : Number});
-
-  // let buzzword = req.body.buzzword,
-  //     heard = boolean
-
-});
-
-// var b = bodyParser.urlencoded();
-// console.log(b);
 
 let buzzwords = require('./routes');
 app.use('/buzzwords', buzzwords);
@@ -38,11 +18,6 @@ app.listen(PORT, (err) => {
   console.log('Server running on port: ' + PORT);
 });
 
+//Each time the player scores a new word the total increases by the point value.
 
 
-//Buzz word obj
-// {
-//   buzzWord: String,
-//   points: Number
-//   heard: false
-// }
