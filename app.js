@@ -31,7 +31,8 @@ app.put('/buzzword', (req, res) => {
 // var b = bodyParser.urlencoded();
 // console.log(b);
 
-
+let buzzwords = require('./routes');
+app.use('/buzzwords', buzzwords);
 
 app.listen(PORT, (err) => {
   console.log('Server running on port: ' + PORT);
