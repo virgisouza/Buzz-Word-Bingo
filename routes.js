@@ -12,47 +12,41 @@ router.get('/', (req, res) => {
 
 //GET localhost:3000/buzzwords/1
 router.get('/:id', (req,res) => {
-  res.send(req.params.id);
-  console.log('send json object for id')
+  res.send(req.body.params);
+  console.log({'buzzwords' : buzzArr })
 
 });
 
 //POST localhost:3000/buzzwords
 router.post('/:id', (req,res) => {
 
-
-  // for(var i = 0; i< buzzArr.length; i++) {
-  //   console.log(buzzArr.length);
+     console.log(buzzArr.length);
 
     if(req.body.buzzWord === req.params.id) {
       //return false if buzzword obj already exists
-      res.send({ 'success' : false});
-      console.log('BuzzWord already created! Try Again.');
+      return res.send({ 'success' : false});
     }else{
       //create new buzzWord Object
-
       req.body.buzzword = req.params.id + "";
       req.body.points = 0;
       req.body.heard = false;
 
       buzzArr.push(req.body);
 
-      res.send({ 'success' : true });
-      console.log(req.body);
+      return res.json(req.body);
+      console.log({ 'success' : true });
 
-      res.end('new buzzWord obj created and added to array')
+    }
 
-
-    //}
-  }
 });
 
 //PUT localhost:3000/buzzwords/1
 router.put('/:id', (req, res) => {
 
-  console.log(req.body);
+  let obj = buzzArr[buzzArr.length - 1];
+  obj.heard = true;
 
-  res.send({ 'success' : true, newScore : 0});
+  res.json(buzzArr);
 });
 
 
