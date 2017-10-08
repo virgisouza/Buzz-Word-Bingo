@@ -9,8 +9,6 @@ app.use(express.urlencoded()); // to support URL-encoded bodies
 app.use(bodyParser.urlencoded({extended :true}));
 
 
-
-
 let buzzwords = require('./routes');
 app.use('/buzzwords', buzzwords);
 

@@ -50,8 +50,12 @@ router.put('/:id', (req, res) => {
 });
 
 
-router.delete((req,res) => {
-  res.send('deleted!')
-  });
+router.delete('/:id', (req,res) => {
+  //delete specific buzz word
+});
+
+router.post('/reset', (req, res) => {
+  //resets
+});
 
 module.exports = router;
